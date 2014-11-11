@@ -31,9 +31,9 @@ class HubApplication(tornado.web.Application):
         # Handler to route
         handlers = [
             (r"/", app.userController.IndexHandler),
-            (r"/workhub/user/register", app.userController.RegisterHandler),
-            (r"/workhub/user/login", app.userController.LoginHandler),
-            (r"/workhub/user/logout", app.userController.LogoutHandler)
+            (r"/user/register", app.userController.RegisterHandler),
+            (r"/user/login", app.userController.LoginHandler),
+            (r"/user/logout", app.userController.LogoutHandler)
         ]
         # Settings for this app
         settings = dict(
@@ -42,7 +42,7 @@ class HubApplication(tornado.web.Application):
             xsrf_cookies=False,
             # Use UUID to generate cookie secret
             cookie_secret=base64.b64encode(uuid.uuid4().bytes + uuid.uuid4().bytes),
-            login_url="/workhub/user/login",
+            login_url="user/login",
             debug=True,
         )
 

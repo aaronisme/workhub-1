@@ -16,10 +16,8 @@ class BaseHandler(tornado.web.RequestHandler):
         return self.application.db
 
     def get_current_user(self):
-        user_id = self.get_secure_cookie("uid")
-        if not user_id:
-            return None
-        return self.db.get("SELECT * FROM users WHERE id=%s", int(user_id))
+        return self.get_secure_cookie("userid")
+
 
     def write_error(self, status_code, **kwargs):
         """Write out the error message in json:
