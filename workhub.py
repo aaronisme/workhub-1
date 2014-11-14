@@ -25,6 +25,8 @@ import tornado.ioloop
 
 import app.userController
 from dao.generaldb import ConnectDB
+import app.vmController
+import app.dataController
 
 class HubApplication(tornado.web.Application):
     def __init__(self):
@@ -33,7 +35,9 @@ class HubApplication(tornado.web.Application):
             (r"/", app.userController.IndexHandler),
             (r"/user/register", app.userController.RegisterHandler),
             (r"/user/login", app.userController.LoginHandler),
-            (r"/user/logout", app.userController.LogoutHandler)
+            (r"/user/logout", app.userController.LogoutHandler),
+            (r"/vm", app.vmController.VmPlanHandler),
+            (r"/getData", app.dataController.DataHandler)
         ]
         # Settings for this app
         settings = dict(
